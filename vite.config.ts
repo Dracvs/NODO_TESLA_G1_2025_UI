@@ -1,8 +1,5 @@
 import { vitePlugin as remix } from "@remix-run/dev";
-<<<<<<< HEAD
 //import tailwindcss from "@tailwindcss/vite";
-=======
->>>>>>> 77b7f1b (Initial commit from create-remix)
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -23,10 +20,7 @@ export default defineConfig({
         v3_lazyRouteDiscovery: true,
       },
     }),
-<<<<<<< HEAD
     //tailwindcss(),
-=======
->>>>>>> 77b7f1b (Initial commit from create-remix)
     tsconfigPaths(),
   ],
 });

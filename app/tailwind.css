@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-<<<<<<< HEAD
 /* @import "tailwindcss"; */
 @plugin "daisyui";
-=======
->>>>>>> 77b7f1b (Initial commit from create-remix)
 
 html,
 body {
