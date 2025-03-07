@@ -1,4 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { Album } from "~/models/Album";
+import { getAllAlbums } from "~/services/albumservice";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,10 +10,22 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export function loader(){
+    return getAllAlbums();
+}
+
 export default function Index() {
-  return (
+  
+    const data = useLoaderData<typeof loader>();
+    let _albumList: Album[] = [];
+    _albumList = data.totalEments;
+  
+    return (
     <div className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-16">
+
+      
+
         <header className="flex flex-col items-center gap-9">
           <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
             Bienvenido a <span className="sr-only">Remezclar</span>
@@ -28,6 +43,37 @@ export default function Index() {
             />
           </div>
         </header>
+
+        <div className="card bg-base-100 w-96 shadow-sm card-sm">
+        <figure>
+            <img
+            src="https://kagi.com/proxy/81rEWmLXliL.jpg?c=CXPfL3-FqybbvZNQU82_BGSCqYZMz5YT_CgNKn5TDDXUTF3gKWonqqRMcm0WXFDsgooBNqThg1KyLG4pXDlDJw%3D%3D"
+            alt="Shoes" />
+        </figure>
+        <div className="card-body">
+            <h2 className="card-title">Cien Años de Soledad (1972)</h2>
+            <a href=""><strong>Gabriel García Marquez</strong></a>
+            <p>La obra más famosa del nobel colombiano, publicada en 1972 cuenta las desventuras de la familia buen día a 5 generaciones.</p>
+            <div className="card-actions justify-end">
+                <button className="btn btn-primary">Ver más</button>
+            </div>
+        </div>
+      </div>
+
+      <div className="card bg-base-100 w-96 shadow-sm card-sm">
+        
+        <div className="card-body">
+            <h2 className="card-title">tengo: {data.totalElements} Elementos</h2>
+            {
+                data.responseElements.map( item =>(
+                    <p key={item.id}>{item.name}</p>
+                ))
+            }
+            
+        </div>
+      </div>
+
+
         <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
           <p className="leading-6 text-gray-700 dark:text-gray-200">
             What&apos;s next?
