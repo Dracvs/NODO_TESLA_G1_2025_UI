@@ -1,7 +1,7 @@
 @import 'tailwindcss';
-
-/* @import "tailwindcss"; */
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, cupcake;
+  }
 
 @theme {
   --font-sans:
@@ -29,11 +29,16 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+    /* @apply bg-white dark:bg-gray-950;
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    } */
+}
+
+footer{
+    @apply bg-white dark:bg-gray-950;
+    color: #fff;
 }
 
 /* TODAS MIS CLASES DE CSS VAN AQUÍ */
